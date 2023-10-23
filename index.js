@@ -20,7 +20,7 @@ inquirer.prompt([
           //Installation content
           type: 'input',
           message: 'Please instruct user on how to use ',
-          name: 'installation'
+          name: 'installation',
     },
     {
           /* input for Usage title*/
@@ -28,36 +28,36 @@ inquirer.prompt([
           //with the Usage content arranged with chronological order
           type: 'input',
           message: ' ',
-          name: 'usage'
+          name: 'usage',
     },
     {
           /* input for Credit title*/
           //credit content 
           type: 'input',
           message: ' ',
-          name: 'credit(s)'
+          name: 'credit(s)',
     },
     {
           /*input for License title */
           //License content
           type: 'input',
           message: ' ',
-          name: 'license'
+          name: 'license',
     },
     {
           /* Deployed website Title*/
           //content inluding url and screenshot
           type: 'input',
           message: ' ',
-          name: 'deployment'
+          name: 'deployment',
     },
     {
           /* badges title*/
           //content for badges 
           type: 'input',
           message: ' ',
-          name: 'badges'
-    }
+          name: 'badges',
+    },
 ]).then((response) => {
     //create the file with readMe input here
     const filename = `${}`;
