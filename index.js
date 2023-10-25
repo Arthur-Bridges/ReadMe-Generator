@@ -2,63 +2,98 @@ import inquirer from "inquirer";
 import fs from 'fs';
 
 inquirer.prompt([
+      {
+            type: 'input',
+            message: 'Provide the Github username: ',
+            name: 'githubUsername',
+      },
+      {
+            type: 'input',
+            message: 'Provide the email: ',
+            name: 'email',
+      },
     {
-        /* input for project title*/
         type: 'input',
         message: 'What is the Project name?: ',
         name: 'title',
     },
     {
-          /*input for description title*/
-          //Description content
           type: 'input',
           message: 'Please enter the description of project (if no description type "N/A"): ',
           name: 'description',
     },
     {
-          /* input for installation title*/
-          //Installation content
+      type: 'input',
+      message: 'Table of contents?: ',
+      name: 'tableOfContents',
+      },
+    {
           type: 'input',
           message: 'Please instruct user on how to use ',
           name: 'installation',
     },
     {
-          /* input for Usage title*/
-          //MAY BE A SPECIAL CASE TO INCLUDE THE NUMBERS
-          //with the Usage content arranged with chronological order
           type: 'input',
-          message: ' ',
+          message: 'What are the usage instructions: ',
           name: 'usage',
     },
     {
-          /* input for Credit title*/
-          //credit content 
-          type: 'input',
-          message: ' ',
-          name: 'credit(s)',
-    },
-    {
-          /*input for License title */
-          //License content
-          type: 'input',
-          message: ' ',
+          type: 'checkbox',
+          message: 'Choose a license for your project: ',
           name: 'license',
+          choices: ['Apache', 'GNU', 'MIT', 'BSD', 'Boost Software License 1.0', 'Eclipse'],
     },
     {
-          /* Deployed website Title*/
-          //content inluding url and screenshot
-          type: 'input',
-          message: ' ',
-          name: 'deployment',
-    },
+      type: 'input',
+      message: 'Provide the list of contributors and/or cite resource(s): ',
+      name: 'contribution',
+      },
     {
-          /* badges title*/
-          //content for badges 
           type: 'input',
-          message: ' ',
-          name: 'badges',
+          message: 'Provide a link to the deployed website and/or screenshot: ',
+          name: 'test',
     },
 ]).then((response) => {
-    //create the file with readMe input here
-    const filename = `${}`;
+    const filename = `${response.title.toLowerCase().split(' ').join('-')}-README.md`;
+
+    const readMeContent = ` #${response.title}
+
+   ![License Badge](https://img.shields.io/badge/License-${response.license}-blue)
+
+   ##Description
+   
+   ${response.description}
+   
+   ##Table of Contents
+   
+   ${response.tableOfContents}
+   
+   ##Installation
+   
+   ${response.installation}
+   
+   ##Usage
+   
+   ${response.usage}
+   
+   ##License
+   
+   This project is licensed under the ${response.license} License. See the [LICENSE](LICENSE) file for details.
+
+   ##Contributors
+   
+   ${response.contribution}
+   
+   ##Test
+   
+   ${response.test}
+   
+   ##Questions
+   
+   For any questions please contact me at ${response.githubUsername}(https://github.com/${response.githubUsername}) or email ${response.email}.
+  `;
+
+   fs.writeFile(filename, readMeContent, () => {
+      console.log(`"${filename}" has been successfully created!`);
+   });
 });
