@@ -65,8 +65,14 @@ inquirer.prompt([
    ${response.description}
    
    ## Table of Contents
-   
-   ${response.tableOfContents}
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributors](#contributors)
+- [test](#test)
+- [Questions](#questions)
+
    
    ## Installation
    
