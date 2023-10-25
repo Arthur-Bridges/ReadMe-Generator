@@ -29,7 +29,7 @@ inquirer.prompt([
       },
     {
           type: 'input',
-          message: 'Please instruct user on how to use ',
+          message: 'Please instruct user on how to use: ',
           name: 'installation',
     },
     {
@@ -56,39 +56,39 @@ inquirer.prompt([
 ]).then((response) => {
     const filename = `${response.title.toLowerCase().split(' ').join('-')}-README.md`;
 
-    const readMeContent = ` #${response.title}
+    const readMeContent = ` # ${response.title}
 
    ![License Badge](https://img.shields.io/badge/License-${response.license}-blue)
 
-   ##Description
+   ## Description
    
    ${response.description}
    
-   ##Table of Contents
+   ## Table of Contents
    
    ${response.tableOfContents}
    
-   ##Installation
+   ## Installation
    
    ${response.installation}
    
-   ##Usage
+   ## Usage
    
    ${response.usage}
    
-   ##License
+   ## License
    
    This project is licensed under the ${response.license} License. See the [LICENSE](LICENSE) file for details.
 
-   ##Contributors
+   ## Contributors
    
    ${response.contribution}
    
-   ##Test
+   ## Test
    
    ${response.test}
    
-   ##Questions
+   ## Questions
    
    For any questions please contact me at ${response.githubUsername}(https://github.com/${response.githubUsername}) or email ${response.email}.
   `;
